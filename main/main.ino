@@ -1,5 +1,6 @@
 // https://www.instructables.com/id/Arduino-LeonardoMicro-as-Game-ControllerJoystick/
 // https://howtomechatronics.com/tutorials/arduino/arduino-and-mpu6050-accelerometer-and-gyroscope-tutorial/
+// https://maker.pro/arduino/tutorial/how-to-interface-arduino-and-the-mpu-6050-sensor
 // https://github.com/MHeironimus/ArduinoJoystickLibrary/tree/version-1.0
 // https://github.com/MHeironimus/ArduinoJoystickLibrary
 
