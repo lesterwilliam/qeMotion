@@ -15,7 +15,7 @@
 #define BUTTON_R            15
 
 // Timing definitions
-#define TRACKER_INTERVAL    10
+#define TRACKER_INTERVAL    10 // These values define how frequent those taskt are done (in ms)
 #define MOTION_INTERVAL     50
 #define KEYBOARD_INTERVAL   10
 #define LED_INTERVAL        100
@@ -82,9 +82,7 @@ void hardwareTest(){
 
 void setup(){
   Serial.begin(9600);
-  Serial.println("1");
   Wire.begin();
-  Serial.println("2");
   pinMode(LED_STATUS_4, OUTPUT);
   pinMode(LED_STATUS_3, OUTPUT);
   pinMode(LED_STATUS_2, OUTPUT);
@@ -99,14 +97,12 @@ void setup(){
   hardwareTest();
   
   mpu.initialize();
-  Serial.println("2");
   if(!mpu.testConnection()) {
     mpuConnected = 0;
     noSensor();
   }else{
     mpuConnected = 1;
   }
-  Serial.println("3");
   Keyboard.begin();
   delay(3000);
 }
@@ -127,21 +123,6 @@ void tracker(){
     vx[trackerCounter] =  (gx + 1800) / 150;  // "+300" because the x axis of gyroscope give values about -350 while it's not moving. Change this value if you get something different using the TEST code, chacking if there are values far from zero.
     vy[trackerCounter] = -(gy -   30) / 150; // same here about "-100"
     vz[trackerCounter] = -(gz -   30) / 150; // same here about "-100"
-  
-    /*Serial.print("gx = ");
-    Serial.print(gx);
-    Serial.print("gy = ");
-    Serial.print(gy);
-    Serial.print(" | gz = ");
-    Serial.print(gz);
-    
-    Serial.print("        | X = ");
-    Serial.print(vx[trackerCounter]);
-    Serial.print(" | Y = ");
-    Serial.print(vy[trackerCounter]);
-    Serial.print(" | Z = ");
-    Serial.println(vz[trackerCounter]);
-    */
     
     if(trackerCounter >= (TRACKING_TICKS -1)){
       trackerCounter = 0;
@@ -315,39 +296,32 @@ void button(){
 
 void loop(){
   currentMillis = millis();
-  //Serial.println("Start looping");
   if (currentMillis - tracker_previousMillis >= TRACKER_INTERVAL) {
     tracker_previousMillis = currentMillis;
-    //Serial.println("In tracker");
     tracker();
   }
   
   if (currentMillis - motion_previousMillis >= MOTION_INTERVAL) {
     motion_previousMillis = currentMillis;
-    //Serial.println("In tracker");
     motion();
   }
   
   if (currentMillis - keyboard_previousMillis >= KEYBOARD_INTERVAL) {
     keyboard_previousMillis = currentMillis;
-    //Serial.println("In keyboard");
     keyboard();
   }
   
   if (currentMillis - led_previousMillis >= LED_INTERVAL) {
     led_previousMillis = currentMillis;
-    //Serial.println("In led");
     led();
   }
   
   if(currentMillis - button_previousMillis >= BUTTON_INTERVAL){
     button_previousMillis = currentMillis;
-    //Serial.println("In button");
     button();
   }
   
   if(currentMillis - test_previousMillis >= TEST_INTERVAL){
     test_previousMillis = currentMillis;
-    //Serial.println("In Test");
   }
 }
