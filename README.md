@@ -1,7 +1,7 @@
 # qeMotion
 
 ## Introduction
-This project originated from my need make leaning in first-person-shooter games easiert. Games that enable you to lean around corners to peak or take a shot with giving the enemy the smallest possible target, like PlayerUnknown Battleground or Tom Clancy's Six Siege usually implemet leaning with the keyboard keys 'Q' and 'E'. While it is quite the obvious choice to use the keys close to the usual movement-keys 'W'/'A'/'S'/'D', it is quite hard to use if you need to crouch, move and lean at the same time. There just aren't enough fingers.
+This project originated from my need make leaning in first-person-shooter games easier. Games that enable you to lean around corners to peak or take a shot with giving the enemy the smallest possible target, like PlayerUnknown Battleground or Tom Clancy's Six Siege usually implemet leaning with the keyboard keys 'Q' and 'E'. While it is quite the obvious choice to use the keys close to the usual movement-keys 'W'/'A'/'S'/'D', it is quite hard to use if you need to crouch, move and lean at the same time. There just aren't enough fingers.
 My idea to the problem was to implement a simple device that tracks my head motion to trigger and hold the respective lean movement.
 
 ## Hardware
@@ -13,8 +13,8 @@ The MPU6050 sensor unit is fixed to the headset, while the Arduino sits on my de
 To make development easier and usage more versatile I've implemented multiple modes for the device. Only two of which are actually in use right now, one of which does exactly nothing, and the other is my first try at motion tracking (which works to some degree).
 The usual loop() function calls subfunctions in defined time intervals, which can be tuned in the #defines.
 
-This whole software is not nearly perfect nor finished. But I've tried to design it in a way it is the easiest to understand and modify to someones need. If you struggle to understand it's structure and thoughts behind it, feel free to ask me anything. I'd be glad to help!
+This whole software is not nearly perfect nor finished. But I've tried to design it in a way it is the easiest to understand and modify to someones needs. If you struggle to understand it's structure and thoughts behind it, feel free to ask me anything. I'd be glad to help!
 
 ## Case
-I've designed a 3d-printable case for the device. This may not suit you and your print layout, but I'll try to add some photos of my PCB for reference.
-There is also a secondary case which doesn't really have to do anything with this sensor. But since my headset (HyperX Cloud 2) has this remote near where the Arduino will sit, I've designed a case that snaps those two together nicely.
+I've designed a 3d-printable case for the device. This may not suit you and your PCB layout, but I'll try to add some photos of my PCB for reference.
+There is also a secondary case which doesn't really have to do anything with this sensor. But since my headset (HyperX Cloud 2) has this remote near where the Arduino will sit, I've designed a case that snaps those two together nicely (MAGNETS!!).
